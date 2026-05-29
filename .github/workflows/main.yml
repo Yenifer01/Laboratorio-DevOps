@@ -67,12 +67,12 @@ jobs:
         run: |
           if [ "${{ github.ref_name }}" == "qa" ]; then
             echo "PROFILE=qa" >> $GITHUB_ENV
-            echo "PORT=8083" >> $GITHUB_ENV
-            echo "CONTAINER=hola-mundo-api-qa" >> $GITHUB_ENV
+            echo "PORT=7075" >> $GITHUB_ENV
+            echo "CONTAINER=hola-mundo-api-qa-Yenifer" >> $GITHUB_ENV
           else
             echo "PROFILE=prd" >> $GITHUB_ENV
-            echo "PORT=8081" >> $GITHUB_ENV
-            echo "CONTAINER=hola-mundo-api-prd" >> $GITHUB_ENV
+            echo "PORT=6075" >> $GITHUB_ENV
+            echo "CONTAINER=hola-mundo-api-prd-Yenifer" >> $GITHUB_ENV
           fi
 
       - name: Desplegar contenedor en VPS
@@ -84,7 +84,7 @@ jobs:
           envs: PROFILE,PORT,CONTAINER
           script: |
             cd /home/app/hola-mundo-api
-            docker build -t hola-mundo-api-$PROFILE:latest .
+            docker build -t hola-mundo-api-Yenifer-$PROFILE:latest .
             docker stop $CONTAINER || true
             docker rm $CONTAINER || true
             docker run -d \
